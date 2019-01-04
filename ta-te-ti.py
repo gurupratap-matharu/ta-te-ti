@@ -104,3 +104,53 @@ def computer_move():
 def space_exist():
     return board.count('X') + board.count('O') != 9
 
+
+def playTicTacToe():
+    """Start the game"""
+    global player, computer
+    player, computer = select_char()
+    print('Player is [%s] and computer is [%s]' % (player, computer))
+    result=' Deuce '.center(40, '*')
+    print_board()
+    whoPlaysFirst = random.choice(['human','computer'])
+    
+    if whoPlaysFirst == 'computer':
+        print("Computer plays first")
+        time.sleep(1)
+        computer_move()
+        print_board()
+
+    while space_exist():
+        print('Make your move ! [1-9] : ', end='')
+        
+        try:
+            move = int(input())
+        except ValueError:
+            print("Invalid input. Try again.")
+            continue
+        if move not in range(1,10):
+            print("Please enter a number between 1-9")
+            continue
+            
+        
+        if not can_move(move):
+            print(' >> Invalid number ! Try again !')
+            continue
+        else:
+            make_move(player, move)
+            print_board()
+            if can_win(player, move):
+                result = '*** Congratulations ! You won ! ***'
+                break
+        print("Wait. Computer is thinking...")        
+        time.sleep(1) 
+        res = computer_move()
+        print_board()
+        if res:
+            result = '=== You lose ! =='
+            break
+    print(result)
+
+
+if __name__=='__main__':
+    playTicTacToe()
