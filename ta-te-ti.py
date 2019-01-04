@@ -75,3 +75,32 @@ def make_move(turn, move):
     else:
         return False
      
+def computer_move():
+    """
+    Makes the computer take an intelligent move to win the game. Returns True if computer wins
+    else False.
+    """
+
+    # Let computer check for any possible move to end the game.
+    for possibleMove in range(1,10):
+        if can_move(possibleMove) and can_win(computer, possibleMove):
+    
+            make_move(computer, possibleMove)
+            return can_win(computer, possibleMove) 
+    
+    # If player can win, block him.
+    for possibleMove in range(1,10):
+        if can_move(possibleMove) and can_win(player, possibleMove):
+            make_move(computer, possibleMove)
+            return can_win(computer, possibleMove)
+
+    # Otherwise, try to take one of desired places.
+    for combinations in moves:
+        for possibleMove in combinations:
+            if can_move(possibleMove):
+                make_move(computer, possibleMove)
+                return can_win(computer, possibleMove)
+
+def space_exist():
+    return board.count('X') + board.count('O') != 9
+
