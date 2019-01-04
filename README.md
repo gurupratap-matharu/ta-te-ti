@@ -14,7 +14,7 @@ No special libraries required just run with Python 3
 
 # How to run?
 
-` python tictactoe.py `
+` python tateti.py `
 
 # How to run Unittests?
-` python -m pytest -v tictactoe_test.py `
+` python -m pytest -v tateti_test.py `
