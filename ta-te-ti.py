@@ -41,3 +41,37 @@ def select_char():
         return chars[::-1]
     
     return chars
+
+def can_move(position):
+    """Checks if the move entered by a player or computer is possible. Returns a boolean."""
+
+    return board[position-1] == position-1
+
+def can_win(turn, move):
+    """Finds out if a player has won the game or not. Returns a boolean."""
+    temp = board[move-1]
+    board[move-1] = turn
+    
+    
+    for row in winning_combinations:
+        won = True
+        for position in row:
+            if board[position] != turn:
+                won = False
+                break 
+        if won:
+            board[move -1] = temp
+            return won
+    
+    board[move-1] = temp
+    return won
+
+
+def make_move(turn, move):
+    """Register a legitimate move by any player"""
+    if can_move(move):
+        board[move-1] = turn
+        return can_win(turn, move)
+    else:
+        return False
+     
