@@ -1,0 +1,6 @@
+[
+  "ta-te-ti_test.py::TicTacToeTest::test_can_win",
+  "ta-te-ti_test.py::TicTacToeTest::test_cannot_move_to_occupied_position",
+  "ta-te-ti_test.py::TicTacToeTest::test_select_char_gives_opposite_results",
+  "ta-te-ti_test.py::TicTacToeTest::test_space_exist"
+]
